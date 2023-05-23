@@ -115,8 +115,8 @@ class ImpBullet(Bullet):
 
 
 class StaffBullet(Bullet):
-    speed = 9
-    bullet_size = 12
+    speed = 10
+    bullet_size = 15
     radius = 7
 
     def __init__(self, game, master, room, x, y, target):

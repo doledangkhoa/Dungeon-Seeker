@@ -179,7 +179,7 @@ class Weapon(Object):
 
 class Staff(Weapon):
     name = 'staff'
-    damage = 10
+    damage = 20
     size = (30, 96)
 
     def __init__(self, game, room=None, position=None):
@@ -383,3 +383,116 @@ class FireSword(Weapon):
         y = self.rect.center[1] + y
         if self.game.world_manager.switch_room is False:
             self.game.particle_manager.add_fire_particle(Fire(self.game, x / 4, y / 4))
+
+class Katana(Weapon):
+    name = 'katana'
+    damage = 50
+    size = (36, 90)
+
+    def __init__(self, game, room=None, position=None):
+        super().__init__(game, self.name, self.size, room, position)
+        self.value = 100
+        self.damage_enemies = []
+        self.shadow.set_correct(-3)
+
+    class Slash:
+        def __init__(self, enemy, weapon):
+            self.enemy = enemy
+            self.weapon = weapon
+            self.damage = 0.5
+
+        def update(self):
+            self.enemy.hp -= self.weapon.damage * self.damage
+            self.update_damage()
+
+        def update_damage(self):
+            self.damage += 0.5
+
+        def draw(self):
+            pass
+
+    def screen_shake(self):
+        self.game.screen_position = (random.randint(-1, 1), random.randint(-1, 1))
+
+    def enemy_in_list(self, enemy):
+        for e in self.damage_enemies:
+            if e.enemy is enemy:
+                return True
+
+    def special_effect(self, enemy):
+        for e in self.damage_enemies:
+            if e.enemy is enemy:
+                e.update()
+        if not self.enemy_in_list(enemy):
+            self.damage_enemies.append(self.Slash(enemy, self))
+
+    def player_update(self):
+        self.interaction = False
+        if self.weapon_swing.counter == 10:
+            self.original_image = pygame.transform.flip(self.original_image, 1, 0)
+            self.player.attacking = False
+            self.weapon_swing.counter = 0
+            self.game.screen_position = (0, 0)
+        if self.player.attacking and self.weapon_swing.counter <= 10:
+            self.weapon_swing.swing()
+            self.enemy_collision()
+            self.game.sound_manager.play_sword_sound()
+            self.screen_shake()
+        else:
+            self.weapon_swing.rotate()
+class Golden_sword(Weapon):
+    name = 'golden_sword'
+    damage = 70
+    size = (36, 90)
+
+    def __init__(self, game, room=None, position=None):
+        super().__init__(game, self.name, self.size, room, position)
+        self.value = 100
+        self.damage_enemies = []
+        self.shadow.set_correct(-3)
+
+    class Slash:
+        def __init__(self, enemy, weapon):
+            self.enemy = enemy
+            self.weapon = weapon
+            self.damage = 1
+
+        def update(self):
+            self.enemy.hp -= self.weapon.damage * self.damage
+            self.update_damage()
+
+        def update_damage(self):
+            self.damage += 1
+
+        def draw(self):
+            pass
+
+    def screen_shake(self):
+        self.game.screen_position = (random.randint(-5,5), random.randint(-5, 5))
+
+    def enemy_in_list(self, enemy):
+        for e in self.damage_enemies:
+            if e.enemy is enemy:
+                return True
+
+    def special_effect(self, enemy):
+        for e in self.damage_enemies:
+            if e.enemy is enemy:
+                e.update()
+        if not self.enemy_in_list(enemy):
+            self.damage_enemies.append(self.Slash(enemy, self))
+
+    def player_update(self):
+        self.interaction = False
+        if self.weapon_swing.counter == 10:
+            self.original_image = pygame.transform.flip(self.original_image, 1, 0)
+            self.player.attacking = False
+            self.weapon_swing.counter = 0
+            self.game.screen_position = (0, 0)
+        if self.player.attacking and self.weapon_swing.counter <= 10:
+            self.weapon_swing.swing()
+            self.enemy_collision()
+            self.game.sound_manager.play_sword_sound()
+            self.screen_shake()
+        else:
+            self.weapon_swing.rotate()

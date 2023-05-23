@@ -2,7 +2,7 @@ import pygame
 import random
 from src.utils import get_mask_rect
 from src.objects.object import ShowName
-from src.objects.weapon import AnimeSword, FireSword, Staff
+from src.objects.weapon import AnimeSword, FireSword, Staff, Katana, Golden_sword
 from src.objects.power_up import ShieldPowerUp, AttackPowerUp
 from src.objects.flask import GreenFlask, RedFlask
 import numpy
@@ -25,7 +25,7 @@ class Merchant(Entity):
         self.items_position = [(670, 400), (770, 400), (870, 400)]
         self.items = []
         self.add_items()
-        self.texts = ['Hello there', 'How you doin?', 'I\'m a merchant orc']
+        self.texts = ['Hello there', 'How you doin?', 'I\'m a merchant orc', 'You look weak young man, buy some stuff here']
         self.dialog = ShowName(self)
         self.dialog.text_length = len(self.dialog.text)
         self.interaction = False
@@ -46,8 +46,8 @@ class Merchant(Entity):
         items = [AnimeSword(self.game, self.room), RedFlask(self.game, self.room),
                  ShieldPowerUp(self.game, self.room), AttackPowerUp(self.game, self.room),
                  GreenFlask(self.game, self.room), FireSword(self.game, self.room),
-                 Staff(self.game, self.room)]
-        items = numpy.random.choice(items, size=2, replace=False, p=[0.03, 0.01, 0.2, 0.2, 0.5, 0.03, 0.03])
+                 Staff(self.game, self.room), Katana(self.game, self.room),Golden_sword(self.game, self.room)]
+        items = numpy.random.choice(items, size=3, replace=False, p=[0.01, 0.01, 0.1, 0.1, 0.1, 0.04, 0.04, 0.1, 0.5])
         for it in items:
             self.items.append(it)
         self.items[-1].rect.center = self.items_position[1]
@@ -83,3 +83,4 @@ class Merchant(Entity):
         # self.draw_shadow(self.room.tile_map.map_surface)
         self.draw_shadow(self.room.tile_map.map_surface, 100, (0,0,40, 14), -15 + self.animation_frame,3)
         self.room.tile_map.map_surface.blit(self.image, self.rect)
+    

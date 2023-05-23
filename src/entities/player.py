@@ -8,8 +8,8 @@ from src.particles import Dust
 
 class Player(Entity):
     name = 'player'
-    speed = 360
-    max_hp = 100
+    speed = 450
+    max_hp =300
     gold = 0
     shield = 1
     strength = 1

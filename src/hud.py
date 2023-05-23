@@ -139,21 +139,13 @@ class Hud:
         text_surface = pygame.font.Font(utils.font, 15).render(text2, True, (255, 255, 255))
         self.game.screen.blit(text_surface, (0, 150))
         text2 = f'LEVEL: {int(self.game.world_manager.level)}'
-        text_surface = pygame.font.Font(utils.font, 15).render(text2, True, (255, 255, 255))
-        self.game.screen.blit(text_surface, (600, 0))
-        # text3 = f'C1111pa: {str(int(self.player.rect.x)), str(int(self.game.player.rect.midbottom[1]))}'
-        # text_surface = pygame.font.Font(utils.font, 15).render(text3, True, (255, 255, 255))
-        # self.game.screen.blit(text_surface, (0, 140))
-        # text4 = f'HP: {self.player.hp}/{self.player.max_hp}'
-        # text_surface = pygame.font.Font(utils.font, 15).render(text4, True, (255, 255, 255))
-        # self.game.screen.blit(text_surface, (0, 200))
-        # # self.hp.draw(self.game.screen)
+        text_surface = pygame.font.Font(utils.font, 20).render(text2, True, (255, 255, 255))
+        self.game.screen.blit(text_surface, (626,60))
         self.health_bar.draw_health_rectangle()
         self.gold.draw(self.game.screen)
         self.shield.draw(self.game.screen)
         self.attack.draw(self.game.screen)
 
     def draw(self):
-        # self.game.screen.blit(self.hud_frame, self.rect)
         self.draw_info()
-        # self.draw_items()
+

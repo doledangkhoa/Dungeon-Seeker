@@ -15,7 +15,7 @@ class BackgroundEffects:
 
     def __init__(self):
         self.radius = 25
-        self.colors = [(72, 59, 58), (119, 92, 85), (170, 141, 122), (211, 191, 169)]
+        self.colors = [(134, 198, 124), (77, 189, 51), (74, 201, 72), (34, 139, 34)]
         self.surface = pygame.Surface((utils.world_size[0] / 4, utils.world_size[1] / 4),
                                       pygame.SRCALPHA).convert_alpha()
         self.circles = []

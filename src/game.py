@@ -16,7 +16,7 @@ from .sound_manager import SoundManager
 pygame.init()
 pygame.mixer.init()
 
-world_size = (21 * 64, 14 * 64)
+world_size = (21 * 64, 13 * 64)
 
 
 

@@ -4,7 +4,7 @@ import random
 from numpy.random import choice as np
 import src.utils as utils
 from src.particles import ChestParticle
-from src.objects.weapon import AnimeSword, FireSword, Staff
+from src.objects.weapon import AnimeSword, FireSword, Staff , Katana , Golden_sword
 from .object import Object
 from .flask import RedFlask, GreenFlask
 from .power_up import AttackPowerUp, ShieldPowerUp
@@ -34,8 +34,8 @@ class Chest(Object):
         items = [AnimeSword(self.game, self.room), RedFlask(self.game, self.room),
                  ShieldPowerUp(self.game, self.room), AttackPowerUp(self.game, self.room),
                  GreenFlask(self.game, self.room), FireSword(self.game, self.room),
-                 Staff(self.game, self.room)]
-        items = numpy.random.choice(items, size=3, replace=False, p=[0.03, 0.01, 0.2, 0.2, 0.5, 0.03, 0.03])
+                 Staff(self.game, self.room), Golden_sword(self.game, self.room)]
+        items = numpy.random.choice(items, size=3, replace=False, p=[0.01, 0.01, 0.1, 0.1, 0.1, 0.04, 0.04,0.6])
         for it in items:
             self.items.append(it)
         for _ in range(random.randint(20, 30)):

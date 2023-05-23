@@ -5,7 +5,7 @@ import random
 
 from src.objects.chest import Chest
 from .map import TileMap, Spritesheet
-from src.objects.weapon import Weapon, AnimeSword, FireSword, Staff
+from src.objects.weapon import Weapon, AnimeSword, FireSword, Staff, Katana, Golden_sword
 from src.objects.flask import RedFlask, GreenFlask
 from src.particles import Fire
 from src.entities.boss import Boss
@@ -222,6 +222,7 @@ class World:
                         room.objects.append(Staff(self.game, room, (650, 300)))
                         room.objects.append(AnimeSword(self.game, room, (550, 300)))
                         room.objects.append(FireSword(self.game, room, (750, 300)))
+                        room.objects.append(Katana(self.game, room, (850, 300)))
                     elif room.type == 'power_up':
                         power_ups = [ShieldPowerUp(self.game, room), AttackPowerUp(self.game, room)]
                         room.objects.append(random.choice(power_ups))
