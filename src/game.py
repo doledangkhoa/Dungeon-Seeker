@@ -1,5 +1,4 @@
 import pygame
-
 from .entities.enemy_manager import EnemyManager
 from .entities.player import Player
 from .menu import MainMenu
