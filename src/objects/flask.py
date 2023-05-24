@@ -60,7 +60,7 @@ class GreenFlask(Flask):
         # if self.game.player.hp == self.game.player.max_hp:
         #     return
         if self.game.player.hp <= self.game.player.max_hp - 20:
-            self.game.player.hp += 20
+            self.game.player.hp += 50
         else:
             self.game.player.hp = self.game.player.max_hp
         if self.room == self.game.world_manager.current_room:
@@ -81,7 +81,7 @@ class RedFlask(Flask):
 
     def apply_effect(self):
         self.game.player.hp += 20
-        self.game.player.max_hp += 20
+        self.game.player.max_hp += 50
         if self.room == self.game.world_manager.current_room:
             self.room.objects.remove(self)
 

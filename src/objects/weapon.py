@@ -327,7 +327,7 @@ class FireSword(Weapon):
             self.weapon = weapon
             self.counter = 0
             self.tick = 0
-            self.damage = 5 * self.game.player.strength
+            self.damage = 10 * self.game.player.strength
 
         def get_enemy(self):
             return self.enemy

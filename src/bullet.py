@@ -115,14 +115,14 @@ class ImpBullet(Bullet):
 
 
 class StaffBullet(Bullet):
-    speed = 10
+    speed = 20
     bullet_size = 15
-    radius = 7
+    radius = 5
 
     def __init__(self, game, master, room, x, y, target):
         super().__init__(game, master, room, x, y, target)
-        self.damage = 35 * self.game.player.strength
-        self.bounce_back = False
+        self.damage = 45 * self.game.player.strength
+        self.bounce_back = True
 
     def sparkle(self):
         for _ in range(random.randint(2, 4)):
