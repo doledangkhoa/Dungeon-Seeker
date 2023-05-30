@@ -180,7 +180,7 @@ class Weapon(Object):
 class Staff(Weapon):
     name = 'staff'
     damage = 20
-    size = (30, 96)
+    size = (30, 30)
 
     def __init__(self, game, room=None, position=None):
         super().__init__(game, self.name, self.size, room, position)
@@ -387,7 +387,7 @@ class FireSword(Weapon):
 class Katana(Weapon):
     name = 'katana'
     damage = 50
-    size = (36, 90)
+    size = (30, 80)
 
     def __init__(self, game, room=None, position=None):
         super().__init__(game, self.name, self.size, room, position)

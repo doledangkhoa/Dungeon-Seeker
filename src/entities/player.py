@@ -9,11 +9,12 @@ from src.particles import Dust
 class Player(Entity):
     name = 'player'
     speed = 450
-    max_hp =200
+    max_hp =250
     gold = 0
     shield = 1
     strength = 1
     hp = max_hp
+    size = (90, 90)
     items = []
 
     def __init__(self, game):

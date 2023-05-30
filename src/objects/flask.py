@@ -60,7 +60,7 @@ class GreenFlask(Flask):
         # if self.game.player.hp == self.game.player.max_hp:
         #     return
         if self.game.player.hp <= self.game.player.max_hp - 20:
-            self.game.player.hp += 50
+            self.game.player.hp += 20
         else:
             self.game.player.hp = self.game.player.max_hp
         if self.room == self.game.world_manager.current_room:

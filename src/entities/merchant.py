@@ -10,7 +10,7 @@ from src.entities.entity import Entity
 
 class Merchant(Entity):
     name = 'merchant'
-    size = (96, 96)
+    size = (200, 200)
     hp = 10000
 
     def __init__(self, game, room):
@@ -25,7 +25,7 @@ class Merchant(Entity):
         self.items_position = [(670, 400), (770, 400), (870, 400)]
         self.items = []
         self.add_items()
-        self.texts = ['Hello there', 'How you doin?', 'I\'m a merchant orc', 'You look weak young man, buy some stuff here']
+        self.texts = ['Hello there', 'How you doin?', 'I\'m a bunny merchant ', 'You look weak young man, buy some stuff here']
         self.dialog = ShowName(self)
         self.dialog.text_length = len(self.dialog.text)
         self.interaction = False
@@ -36,7 +36,7 @@ class Merchant(Entity):
         self.player_bought = False
 
     def load_images(self):
-        for i in range(4):
+        for i in range(20):
             image = pygame.image.load(f'./assets/characters/{self.name}/idle/idle{i}.png').convert_alpha()
             image = pygame.transform.scale(image, self.size)
             self.images.append(image)
@@ -50,18 +50,22 @@ class Merchant(Entity):
         items = numpy.random.choice(items, size=3, replace=False, p=[0.01, 0.01, 0.1, 0.1, 0.1, 0.04, 0.04, 0.1, 0.5])
         for it in items:
             self.items.append(it)
-        self.items[-1].rect.center = self.items_position[1]
+        self.items[-1].rect.center = self.items_position[1]    
         self.items[-2].rect.center = self.items_position[0]
+        self.items[-3].rect.center = self.items_position[2]
         self.items[-1].for_sale = True
         self.items[-2].for_sale = True
+        self.items[-3].for_sale = True
         self.items[-1].show_price.__init__(self.items[-1])
         self.items[-2].show_price.__init__(self.items[-2])
-        self.items[-2].show_price.set_text_position((650 + 15, 350 + 126))
-        self.items[-1].show_price.set_text_position((750 + 15, 350 + 126))
+        self.items[-3].show_price.__init__(self.items[-3])
+        self.items[-3].show_price.set_text_position((650 + 15, 350 + 126))
+        self.items[-2].show_price.set_text_position((750 + 15, 350 + 126))
+        self.items[-1].show_price.set_text_position((850 + 15, 350 + 126))
 
     def update_animation_frame(self):
         self.animation_frame += 1.5 / 15
-        if self.animation_frame > 4:
+        if self.animation_frame > 20:
             self.animation_frame = 0
         self.image = self.images[int(self.animation_frame)]
 

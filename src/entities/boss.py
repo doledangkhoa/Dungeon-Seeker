@@ -15,8 +15,8 @@ class Boss(Enemy):
     hp = max_hp
     damage = 25
     bullet_damage = 15
-    speed = 14
-    size = (96, 96)
+    speed = 20
+    size = (150, 150)
 
     def __init__(self, game, room):
         super().__init__(game, max_hp=self.max_hp, room=room, name=self.name)
@@ -55,7 +55,7 @@ class Boss(Enemy):
     def move_towards_player(self):
         dir_vector = pygame.math.Vector2(self.game.player.hitbox.x - self.hitbox.x,
                                          self.game.player.hitbox.y - self.hitbox.y)
-        if dir_vector.length_squared() > 0:  # cant normalize vector of length 0
+        if dir_vector.length_squared() > 0: 
             dir_vector.normalize_ip()
             dir_vector.scale_to_length(self.speed / 4)
         self.set_velocity(dir_vector)

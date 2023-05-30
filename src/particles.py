@@ -216,7 +216,7 @@ class DeathAnimation:
         self.images = []
         self.entity = entity
         self.load_images()
-        self.counter = -0.5
+        self.counter = 2
 
     def load_images(self):
         for i in range(12):
